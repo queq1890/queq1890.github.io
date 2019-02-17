@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSpring, animated } from 'react-spring'
 
 const AnimFeTurbulence = animated('feTurbulence')
 const AnimFeDisplacementMap = animated('feDisplacementMap')
 
-const UserName = () => {
-  const [open, toggle] = useState(false)
+const UserName = ({ open, toggle }) => {
   const { freq, scale, transform, opacity } = useSpring({
     reverse: open,
     from: { scale: 10, opacity: 0, transform: 'scale(0.9)', freq: '0.0125, 0.0' },

@@ -1,26 +1,53 @@
-import React from 'react'
-// context つかって一緒に開閉すれば良さそう
+import React, { Fragment } from 'react'
+import Github from '../assets/Github.svg'
+import { useSpring, animated } from 'react-spring'
 
-const SocialLink = () => {
+const SocialLink = ({ open, toggle }) => {
+  const { freq, scale, transform, opacity } = useSpring({
+    reverse: open,
+    from: { scale: 10, opacity: 0, transform: 'scale(0.9)', freq: '0.0125, 0.0' },
+    to: { scale: 150, opacity: 1, transform: 'scale(1)', freq: '0.0, 0.0' },
+    config: { duration: 3000 }
+  })
+
   return (
-    <svg>
-      <g
-        // filter="url(#water)"
-        id="Page-1"
-        stroke="none"
-        stroke-width="1"
-        fill="none"
-        fill-rule="evenodd"
-        font-family="Memoir-Square"
-        font-size="32"
-        font-weight="700">
-        <text id="queq1890" fill="lightblue" text-anchor="middle" dominant-baseline="central">
-          <tspan x="50%" y="50%">
-            Github
-          </tspan>
-        </text>
-      </g>
-    </svg>
+    <div className="social-link-wrapper" onCLick={() => toggle(!open)}>
+      <animated.svg style={{ transform, opacity }}>
+        <g
+          filter="url(#water)"
+          id="Page-1"
+          stroke="none"
+          stroke-width="1"
+          fill="lightblue"
+          fill-rule="evenodd"
+          transform="translate(50, 50)">
+          <path
+            d="M16.0001325,0 C7.16466156,0 0,7.34463171 0,16.4050754 C0,23.6532674 4.58452494,29.8025899 10.9418671,31.9718045 C11.7415028,32.1236631 12.0350735,31.6159283 12.0350735,31.1826287 C12.0350735,30.7914366 12.020236,29.4991444 12.0133471,28.1283421 C7.5620948,29.1207204 6.62282757,26.1927561 6.62282757,26.1927561 C5.89499483,24.2965611 4.84630097,23.7923579 4.84630097,23.7923579 C3.39460981,22.7741718 4.95572759,22.7950897 4.95572759,22.7950897 C6.56241772,22.9108174 7.40842062,24.4856373 7.40842062,24.4856373 C8.83547092,26.9936133 11.1514469,26.2685496 12.0644835,25.8493764 C12.2080894,24.7890828 12.6227448,24.0653774 13.0803229,23.6557124 C9.52647485,23.2408857 5.79060236,21.8342242 5.79060236,15.5482561 C5.79060236,13.7571939 6.41563237,12.2937551 7.43915545,11.1449 C7.27302836,10.7317033 6.72536535,9.06316034 7.59415442,6.80348263 C7.59415442,6.80348263 8.93774374,6.36257653 11.9953302,8.48506535 C13.2716208,8.12158269 14.6403809,7.93929803 16.0001325,7.93304983 C17.3598841,7.93929803 18.729704,8.12158269 20.0083792,8.48506535 C23.0622563,6.36257653 24.4039909,6.80348263 24.4039909,6.80348263 C25.2748996,9.06316034 24.7269716,10.7317033 24.5608445,11.1449 C25.5867522,12.2937551 26.207543,13.7571939 26.207543,15.5482561 C26.207543,21.8491655 22.4645167,23.2365392 18.9016601,23.6426726 C19.4755537,24.1517657 19.9869178,25.1501205 19.9869178,26.6806596 C19.9869178,28.875682 19.9683709,30.6422946 19.9683709,31.1826287 C19.9683709,31.6191883 20.2563776,32.1307263 21.0674063,31.9696312 C27.4213041,29.7979717 32,23.6508225 32,16.4050754 C32,7.34463171 24.8363983,0 16.0001325,0"
+            id="Fill-5"
+            fill="lightblue"
+            x="50%"
+            y="50%"
+          />
+        </g>
+        <g
+          filter="url(#water)"
+          id="Page-1"
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+          font-family="Memoir-Square"
+          font-size="32"
+          font-weight="700"
+          transform="translate(90, 78)">
+          <a href="https://github.com/queq1890" target="_blank">
+            <text id="queq1890" fill="lightblue">
+              <tspan>Github</tspan>
+            </text>
+          </a>
+        </g>
+      </animated.svg>
+    </div>
   )
 }
 
